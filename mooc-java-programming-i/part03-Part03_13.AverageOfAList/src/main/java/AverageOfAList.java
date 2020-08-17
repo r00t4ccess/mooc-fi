@@ -6,11 +6,19 @@ public class AverageOfAList {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
-        // implement here a program, that first reads user input
-        // adding them on a list until user gives -1.
-        // Then it computes the average of the numbers on the list
-        // and prints it.
+        ArrayList<Integer> number = new ArrayList<>();
+        while (true) {
+            int value = scanner.nextInt();
+            if (value == -1) {
+                break;
+            }
+            number.add (value);
+        }
+        int total = 0;
+        for (int num : number) {
+            total = total + num;
+        }
+        System.out.println("Average: " + ((double)total / number.size()));
         
     }
 }
