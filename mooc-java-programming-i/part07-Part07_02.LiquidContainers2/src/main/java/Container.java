@@ -41,4 +41,23 @@ public class Container {
         return this.contains() + "/100";
     }
     
+    public void move(Container container, int amount) {
+        Container cont = container;
+        if (amount >= 0 && this.volume > 0){
+            if (amount > this.volume) {
+                cont.volume = this.volume;
+            } else {
+                cont.volume += amount;
+                this.volume -= amount;
+            }
+
+            if (this.volume <= 0) {
+                this.volume = 0;
+            }
+            if (cont.volume >= 100) {
+                cont.volume = 100;
+            }
+        }
+    }
+    
 }

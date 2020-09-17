@@ -25,8 +25,7 @@ public class LiquidContainers2 {
                 cont1.add(amount);
             }
             if (task.equals("move")) {
-                cont1.remove(amount);
-                cont2.add(amount);
+                cont1.move(cont2, amount);
             }
             if (task.equals("remove")) {
                 cont2.remove(amount);
