@@ -44,6 +44,12 @@ public class Searching {
     }
 
     public static int linearSearch(ArrayList<Book> books, int searchedId) {
+        for (int i = 0; i < books.size(); i++) {
+            System.out.println(books.get(i));
+            if (books.get(i).equals(searchedId)) {
+                return i;
+            }
+        }
         return -1;
     }
 
