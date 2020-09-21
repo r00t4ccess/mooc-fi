@@ -59,7 +59,6 @@ public class Searching {
         int middle = books.size() / 2 - 1;
         int upper = books.size() -1;
         int lower = 0;
-        books.
         while (true) {
             if (searchedId < middle) {
                 lower = 0;
