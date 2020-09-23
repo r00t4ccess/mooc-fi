@@ -1,7 +1,7 @@
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Arrays;
+import java.util.Collections;
 
 public class Searching {
 
@@ -10,10 +10,13 @@ public class Searching {
         Scanner scanner = new Scanner(System.in);
         ArrayList<Book> books = new ArrayList<>();
         System.out.println("How many books to create?");
-        int numberOfBooks = Integer.valueOf(scanner.nextLine());
-        for (int i = 0; i < numberOfBooks; i++) {
-            books.add(new Book(i, "name for the book " + i));
-        }
+        //int numberOfBooks = Integer.valueOf(scanner.nextLine());
+//        for (int i = 0; i < numberOfBooks; i++) {
+//            books.add(new Book(i, "name for the book " + i));
+//        }
+        books.add(new Book(444711, "name for the book " + 444711));
+        books.add(new Book(641632, "name for the book " + 641632));
+        books.add(new Book(806014, "name for the book " + 806014));
 
         System.out.println("Id of the book to search for?");
         int idToSearchFor = Integer.valueOf(scanner.nextLine());
@@ -45,34 +48,34 @@ public class Searching {
     }
 
     public static int linearSearch(ArrayList<Book> books, int searchedId) {
+        int index = -1;
         int count = 0;
         for (Book i : books) {
             if (i.getId() == searchedId) {
-                return count;
+                index = count;
             }
             count++;
         }
-        return -1;
+        return index;
     }
 
     public static int binarySearch(ArrayList<Book> books, long searchedId) {
-        int middle = books.size() / 2 - 1;
+        int index = -1;
         int upper = books.size() -1;
         int lower = 0;
-        while (true) {
-            if (searchedId < middle) {
-                lower = 0;
-                upper = middle;
-            } else {
-                upper = books.size() -1;
-                lower = middle;
-            }
-            if (books.get() = middle) {
-                
+        while (lower <= upper) {
+            int middle = (lower + upper) / 2;
+            if (books.get(middle).getId() == searchedId) {
+                index = middle;
+                break;
+            } else if (books.get(middle).getId() < searchedId) {
+                lower = middle + 1;
+            } else if (books.get(middle).getId() > searchedId) {
+                upper = middle - 1;
             }
         }
 
-        return -1;
+        return index;
     }
 }
 
