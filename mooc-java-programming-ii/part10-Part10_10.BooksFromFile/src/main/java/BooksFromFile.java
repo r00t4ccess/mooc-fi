@@ -10,8 +10,24 @@ public class BooksFromFile {
     
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        // test your method here
+        String input = scanner.nextLine();
+        readBooks(input);
 
+    }
+    
+    public static List<Book> readBooks(String file) {
+        List<Book> books = new ArrayList<>();
+        try {
+        Files.lines(Paths.get(file))
+                .map(n -> n.split(","))
+                .map(parts -> new Book(parts[0], Integer.valueOf(parts[1]), Integer.valueOf(parts[2]), parts[3]))
+                .forEach(Book -> books.add(Book));
+        
+        } catch (Exception e) {
+            System.out.println("Error opening file " + e.getMessage());
+        }
+        
+        return books;
     }
 
 }
