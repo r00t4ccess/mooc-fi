@@ -8,6 +8,44 @@
  *
  * @author larry
  */
-public class Hand {
+
+import java.util.*;
+
+public class Hand implements Comparable<Hand> {
+    
+    private List<Card> hand;
+    
+    public Hand() {
+        hand = new ArrayList<>();
+    }
+    
+    public void add(Card card) {
+        hand.add(card);
+    }
+    
+    public void print() {
+        hand.stream()
+                .forEach(n -> System.out.println(n.toString()));
+    }
+    
+    public void sort() {
+        Collections.sort(this.hand);
+    }
+    
+    @Override
+    public int compareTo(Hand hand) {
+            return this.handTotal() - hand.handTotal();
+  
+    }
+    
+    public void sortBySuit() {
+        Collections.sort(this.hand, new BySuitInValueOrder());
+    }
+    public int handTotal() {
+        return hand.stream().mapToInt(Card::getValue).sum();
+    }
+    
+    
+    
     
 }
